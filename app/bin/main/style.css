@@ -1,0 +1,157 @@
+.my-file-tree:container{
+ 	-fx-background-color: rgb(255, 255, 251);
+}
+
+.my-file-tree:not-scanned{
+ 	-fx-background-color: rgb(255, 200, 195);
+}
+
+.my-file-tree:selected-container{
+ 	-fx-background-color: rgb(225, 225, 251);
+}
+
+.my-file-tree:hover{
+ 	-fx-background-color: linear-gradient(from 0% 10% to 0% 100%, rgba(255, 255, 251, 1), rgba(150, 150, 255, 0.2));
+}
+
+.my-file-tree:selected-hover{
+	-fx-background-color: linear-gradient(from 0% 10% to 0% 100%, rgba(240, 240, 251, 1), rgba(190, 190, 251, 0.6));
+}
+
+.my-file-tree:not-scanned-hover{
+ 	-fx-background-color: linear-gradient(from 0% 10% to 0% 100%, rgba(255, 200, 205, 1.0), rgba(255, 215, 235, 1));
+}
+
+.my-file-tree:selected-not-scanned-container{
+ 	-fx-background-color: rgb(255, 150, 150);
+}
+.my-file-tree:selected-not-scanned-hover{
+ 	-fx-background-color: linear-gradient(from 0% 10% to 0% 100%, rgba(255, 145, 150, 1), rgba(255, 195, 205, 1));
+}
+
+.scan-selector-container:container{
+	-fx-background-color: rgb(255, 255, 251);
+}
+
+.scan-selector-container:selected-container{
+	-fx-background-color: rgb(225, 225, 251);
+}
+
+.table-hbox:table-splitter{
+	-fx-background-color: rgb(200, 200, 200);
+}
+
+.children-files:standart-container{
+	-fx-background-color: rgb(255, 255, 251);
+}
+
+.children-files:selected-container{
+	-fx-background-color: rgb(225, 225, 251);
+}
+
+.indicator-hbox:children-indicator{
+	-fx-background-color: rgba(255, 200, 200, 0.4);
+}
+
+.label:red-indicator{
+	-fx-background-color: rgb(255, 0, 0);
+}
+
+.label:blue-indicator{
+	-fx-background-color: rgb(0, 0, 255);
+}
+
+.label:grey-label{
+	-fx-text-fill: rgb(150, 150, 150);
+}
+
+.Stack-Pane:space-indicator{
+	
+}
+
+.label:filename{
+	
+}
+
+.label:splitter{
+	-fx-background-color: rgb(210, 210, 220);
+	-fx-background-radius: 4px;
+}
+
+.files-tree:all-files{
+	-fx-background-color: rgb(255, 255, 251);
+ 	-fx-background-radius: 1px;
+ 	-fx-effect: innershadow(gaussian, rgba(0, 0, 0, 0.2), 5, 0.3, 0, 0);
+}
+
+.children-box:all-files{
+	-fx-background-color: rgb(240, 240, 240);
+	-fx-background-radius: 1px;
+	-fx-effect: innershadow(gaussian, rgba(0, 0, 0, 0.2), 5, 0.3, 0, 0);
+}
+
+.pane-header:header{
+	-fx-background-color: rgb(255, 255, 251);
+}
+
+.select-disks:disks{
+	-fx-background-color: rgb(255, 255, 251);
+	-fx-background-radius: 1px;
+	-fx-effect: innershadow(gaussian, rgba(0, 0, 0, 0.2), 5, 0.3, 0, 0);
+}
+
+.scan-info-panel:main-style{
+	-fx-background-color: rgb(255, 255, 251);
+	-fx-border-color: rgb(230, 230, 230), rgb(220, 220, 220);
+	-fx-background-radius: 1px;
+	-fx-border-width: 1px, 2px;
+	-fx-border-radius: 1px;
+	-fx-effect: dropshadow(
+		gaussian,
+		rgba(0, 0, 0, 0.3),
+		8px,
+		0.1px,
+		1px,
+		2px
+	);
+	
+}
+
+.scan-info-panel:inner-style{
+	-fx-background-color: rgb(255, 255, 251);
+	-fx-border-color: rgb(220, 220, 220), rgb(230, 230, 230);
+	-fx-border-width: 0.5px, 0.5px;
+	-fx-border-radius: 2px;
+	-fx-effect: innershadow(
+		gaussian,
+		rgba(0, 0, 0, 0.3),
+		5px,
+		0.3px,
+		0px,
+		0px
+	);
+	
+}
+
+.view-port:focused{
+	-fx-faint-focus-color: transparent;
+	-fx-focus-color: transparent;
+	-fx-background-color: -fx-box-border, -fx-background;
+	-fx-background-insets: 0,1;
+}
+
+.text-path:focused{
+	-fx-faint-focus-color: transparent;
+	-fx-focus-color: transparent;
+	-fx-background-color: -fx-box-border, white;
+	-fx-background-insets: 0,1;
+}
+
+.text-path{
+	-fx-background-color: -fx-box-border, white;
+	-fx-background-insets: 0,1;
+	-fx-background-radius: 4px;
+	-fx-effect: innershadow(gaussian, rgba(0, 0, 0, 0.13), 20, 0.01, 0, 2);
+}
+
+

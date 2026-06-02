@@ -1,0 +1,34 @@
+module spaceInfo {
+	
+	requires javafx.graphics;
+	requires javafx.fxml;
+	requires javafx.base;
+//	exports com.alex.app to javafx.graphics;
+	exports com.alex.app;
+	exports com.alex.app.dir;
+	requires transitive javafx.controls;
+	requires java.instrument;
+	requires net.bytebuddy.agent;
+	
+	opens com.alex.app to javafx.controls
+	, spring.core, spring.context, spring.beans;
+	
+	opens com.alex.controller to javafx.fxml;
+	
+	requires spring.boot;
+    requires spring.boot.autoconfigure;
+    requires spring.context;
+    requires spring.beans;
+    requires spring.core;
+    requires spring.data.jpa;
+    requires spring.data.commons;
+    requires spring.jcl;
+    requires spring.webmvc;
+    requires jakarta.servlet;
+    
+    requires spring.web;
+	requires jakarta.persistence;
+    
+    opens com.alex.app.dir to org.hibernate.orm.core, spring.core;
+ 
+}
