@@ -8,6 +8,8 @@ import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import javax.swing.filechooser.FileSystemView;
+
 import com.alex.app.Logic;
 import com.alex.controller.MainController;
 
@@ -186,9 +188,13 @@ public class ChildrensExtractor {
 		oldFilesSet.removeAll(newFilesSet);
 		return new ArrayList<DirectoryFile>(oldFilesSet);
 	}
+	FileSystemView fsv = FileSystemView.getFileSystemView();
 	
 	private boolean checkExists() {
-		if(thisFile.exists()) {
+		if(fsv.isDrive(thisFile)) {
+			return true;
+		}
+		else if(thisFile.exists()) {
 			return true;
 		}
 		var unexists = new ArrayList<DirectoryFile>();

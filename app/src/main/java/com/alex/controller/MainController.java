@@ -74,7 +74,6 @@ public class MainController {
 	public ControllerData controllerData;
 	private Logic logic;
 	private Up upClass;
-	FileCreator cycleFilesCreator = new FileCreator();
 	
 	public Object guiMon = new Object();
 	
@@ -148,9 +147,6 @@ public class MainController {
 	
 	@FXML
 	Button up;
-	
-	@FXML
-	Button clearMemory;
 	
 	@FXML
 	MenuItem createFiles;
@@ -262,12 +258,6 @@ public class MainController {
 		childrenFiles = new ChildrenFiles();
 		setFileBoxStyles();
 		initIcons();
-		
-		createFiles.setOnAction(_->{
-			synchronized(createFiles) {
-				cycleFilesCreator.action();
-			}
-		});
 		backgroundInfo.setText("Старт приложения");
 //		waitScene();
 	}
@@ -3790,133 +3780,6 @@ public class MainController {
 						}
 					}
 				}
-			}
-		}
-	}
-	
-	class FileCreator implements Runnable{
-		boolean isStarted = false;
-		Thread fileMaker;
-		private final static String FOLDER_NAME = "E:\\FF\\3";
-		FileCreator(){
-			Runtime.getRuntime().addShutdownHook(new Thread(()->{
-				clearDir();
-			}, "Runtime hook file creator"));
-		}
-		private void action() {
-			if(!isStarted) {
-				startThread();
-			}
-			else {
-				stopThread();
-			}
-		}
-		private void startThread() {
-			fileMaker = new Thread(this, "File creator");
-			fileMaker.setDaemon(true);
-			File folder = new File(FOLDER_NAME);
-			folder.mkdirs();
-			isStarted = true;
-			fileMaker.start();
-			
-		}
-		
-		private void stopThread() {
-			if(fileMaker!=null) {
-				fileMaker.interrupt();
-			}
-			
-		}
-		
-		private void clearDir() {
-			File folder = new File(FOLDER_NAME);
-			if(!folder.exists()||!folder.isDirectory()||folder.list().length==0) {
-				return;
-			}
-			try {
-				Files.walkFileTree(folder.toPath(), new SimpleFileVisitor<Path>(){
-					long s = 125;
-					int n =1;
-					 @Override
-					    public FileVisitResult visitFile(Path file, BasicFileAttributes attrs)
-					        throws IOException
-					    {
-					       file.toFile().delete();
-						if (n % 20 == 0) {
-							try {
-								Thread.sleep(s);
-							} catch (InterruptedException e) {
-								Thread.currentThread().interrupt();
-								s = 1;
-							}
-						}
-					      
-					       
-					        return FileVisitResult.CONTINUE;
-					    }
-					 
-					 @Override
-					    public FileVisitResult visitFileFailed(Path file, IOException exc)
-					        
-					    {
-						 return FileVisitResult.CONTINUE;
-					    }
-
-					    @Override
-					    public FileVisitResult postVisitDirectory(Path dir, IOException exc)
-					        
-						{
-						if (!dir.toFile().equals(folder)) {
-							dir.toFile().delete();
-
-						}
-						
-						return FileVisitResult.CONTINUE;
-					}
-					 
-				});
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-			
-		}
-
-		@Override
-		public void run() {
-			while(!Thread.interrupted()||!isAppClosing) {
-				for(int i = 0; i<15; i++) {
-					File file = new File(FOLDER_NAME + File.separator + "test_" + i + ".tmp");
-					if(file.exists()) {
-						continue;
-					}
-					else {
-						try {
-							file.createNewFile();
-						} catch (IOException e) {
-							continue;
-						}
-					}
-					
-					try {
-						Thread.sleep(50);
-					} catch (InterruptedException e) {
-						Thread.currentThread().interrupt();
-						break;
-					}
-					
-				}
-				clearDir();
-				try {
-					Thread.sleep(50);
-				} catch (InterruptedException e) {
-					Thread.currentThread().interrupt();
-					break;
-				}
-			}
-			
-			clearDir();
-			synchronized(createFiles) {
-				isStarted = false;
 			}
 		}
 	}

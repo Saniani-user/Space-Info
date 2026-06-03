@@ -9,7 +9,6 @@
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.Separator?>
-<?import javafx.scene.control.SplitMenuButton?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
@@ -44,14 +43,6 @@
                <children>
                   <Button fx:id="selectDisksForScan" layoutX="8.0" layoutY="5.0" mnemonicParsing="false" text="select disks for scan" />
                   <Button fx:id="up" disable="true" layoutX="138.0" layoutY="5.0" mnemonicParsing="false" text="Up" />
-                  <SplitMenuButton layoutX="178.0" layoutY="5.0" mnemonicParsing="false" text="sort">
-                    <items>
-                      <MenuItem mnemonicParsing="false" text="By name" />
-                      <MenuItem mnemonicParsing="false" text="By size" />
-                        <MenuItem fx:id="createFiles" mnemonicParsing="false" text="start/stop mkFiles" />
-                    </items>
-                  </SplitMenuButton>
-                  <Button fx:id="clearMemory" layoutX="246.0" layoutY="5.0" mnemonicParsing="false" text="clear" />
                   <TextField fx:id="textPath" editable="false" layoutX="8.0" layoutY="36.0" prefHeight="25.0" prefWidth="782.0" />
                </children>
             </Pane>
