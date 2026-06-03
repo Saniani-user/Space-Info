@@ -175,7 +175,6 @@ public class ChildrensExtractor {
 		if(unexists.size() == 0) {
 			return;
 		}
-		
 		LOGIC.mySQL.removeFormSQLAndShowedFiles(unexists);
 		LOGIC.mySQL.setSizeFromSQL(parent);
 	}

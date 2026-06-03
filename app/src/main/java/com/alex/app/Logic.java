@@ -934,18 +934,26 @@ public class Logic {
 		}
 		@SuppressWarnings("unlikely-arg-type")
 		private void removeRootFromSQL(DirectoryFile root) {
-			var opened = new ArrayList<NodeInfo>();
-			getAllOpenedChildrens(root.getId(), opened, new ArrayList<DirectoryFile>());
-		
-			if (root.isOpen()) {
-				LinkedHashSet<NodeInfo> showedSet = new LinkedHashSet<NodeInfo>(
+			
+		LinkedHashSet<NodeInfo> showedSet = new LinkedHashSet<NodeInfo>(
 						ChildrensExtractor.COPY_SHOWED_FILES);
+			if (root.isOpen()) {
+				
 				if (showedSet.contains(root)) {
+					var opened = new ArrayList<NodeInfo>();
+					getAllOpenedChildrens(root.getId(), opened, new ArrayList<DirectoryFile>());
 					showedSet.removeAll(opened);
 					showedSet.remove(root);
 					ChildrensExtractor.COPY_SHOWED_FILES = new ArrayList<NodeInfo>(showedSet);
 				}
 
+			}
+			
+			else {
+				if (showedSet.contains(root)) {
+					showedSet.remove(root);
+					ChildrensExtractor.COPY_SHOWED_FILES = new ArrayList<NodeInfo>(showedSet);
+				}
 			}
 			repository.delete(root);
 		}
